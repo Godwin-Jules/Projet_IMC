@@ -6,13 +6,12 @@ Le but de ce projet est de créer une application qui permet de calculer l'indic
 $$IMC = \frac{poids}{taille^2}$$
 
 Au delà de l'IMC, l'application doit également donner une interprétation de l'IMC en fonction des valeurs suivantes :
-1. Moins de 16.5 : Dénutrition ou famine
-2. Entre 16.5 et 18.5 : Maigreur
-3. Entre 18.5 et 25 : Corpulence normale
-4. Entre 25 et 30 : Surpoids
-5. Entre 30 et 35 : Obésité modérée
-6. Entre 35 et 40 : Obésité sévère
-7. Plus de 40 : Obésité morbide ou massive
+1. Moins de 18.5 : Maigreur, Sous-poids
+2. Entre 18.5 et 25 : Corpulence normale
+3. Entre 25 et 30 : Surpoids
+4. Entre 30 et 35 : Obésité (modérée)
+5. Entre 35 et 40 : Obésité sévère
+6. Plus de 40 : Obésité morbide ou massive
 
 Cette application est une plateforme sur laquelle l'on peut :
 * Créer un compte utilisateur
