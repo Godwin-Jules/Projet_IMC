@@ -27,6 +27,7 @@ def modify_user(user_id, user_path, data_path):
     nom = input("Nouveau nom : ").upper()
     prenom = input("Nouveau prenom : ")
     sex = input("Nouveau sexe : ").upper()
+    travail = input("Nouveau travail : ")
     age = input("Nouvel âge : ")
     poids = input("Nouveau poids (en Kg) : ")
     taille = input("Nouvelle taille (en cm) : ")
@@ -37,6 +38,8 @@ def modify_user(user_id, user_path, data_path):
         user["prenom"] = prenom
     if len(sex) != 0:
         data["sex"] = sex
+    if len(travail) != 0:
+        data["travail"] = travail
     if len(age) != 0:
         data["age"] = int(age)
     if len(poids) != 0:
@@ -88,13 +91,46 @@ def user_creator():
     user_prenom = input("Prénom(s) : ")
     user_age = input("Âge : ")
     user_sex = input("Sexe : ").upper()
-    user_poids = float(input("Poids (en Kg) : "))
-    user_taille = float(input("Taille (en cm) : "))/100
-    user_imc = compute_IMC(user_poids, user_taille)
+    user_travail = input("Travail : ")
+    user_poids = input("Poids (en Kg) : ")
+    user_taille = input("Taille (en cm) : ")
+
+    user.update({"id": user_id})
+    data.update({"id": user_id})
+
+    if user_nom:
+        user.update({"nom": user_nom})
+    else:
+        user.update({"nom": "Guest"})
+    if user_prenom:
+        user.update({"prenom": user_prenom})
+    else:
+        user.update({"prenom": f"Unknown {user_id}"})
+    if user_age:
+        data.update({"age": int(user_age)})
+    else:
+        data.update({"age": 18})
+    if user_sex:
+        data.update({"sex": user_sex})
+    else:
+        data.update({"sex": "M"})
+    if user_travail:
+        data.update({"travail": user_travail})
+    else:
+        data.update({"travail": "Etudiant"})
+    if user_poids:
+        data.update({"poids": float(user_poids)})
+    else:
+        data.update({"poids": 50})
+    if user_taille:
+        data.update({"taille": float(user_taille)})
+    else:
+        data.update({"taille": 1.5})
+    
+    user_imc = compute_IMC(data["poids"], data["taille"])
     user_sante = get_sante_classe(user_imc)
 
-    user.update({"id":user_id, "nom": user_nom, "prenom": user_prenom})
-    data.update({"id":user_id, "age": user_age, "sex": user_sex, "poids":user_poids, "taille":user_taille, "IMC":user_imc, "classe_sante": user_sante})
+    data.update({"IMC":user_imc, "classe_sante": user_sante})
     id_increment["id_increment"] = user_id
 
     users.append(user)
